@@ -58,33 +58,33 @@ nav a:hover{color:#8b6f5c;}
   text-align:center;padding:80px 24px;
   position:relative;overflow:hidden;
 }
-/* 大理石ベース */
+/* 大理石ベース — CSS only, 写真なし */
 #hero::before{
   content:'';position:absolute;inset:0;
   background-color:#f8f3ec;
   background-image:
     linear-gradient(108deg,
       transparent 0%,transparent 36%,
-      rgba(190,155,80,0.05) 36.5%,rgba(195,160,82,0.2) 37.2%,
-      rgba(205,168,85,0.25) 37.8%,rgba(192,157,80,0.16) 38.4%,
+      rgba(190,155,80,0.05) 36.5%,rgba(195,160,82,0.22) 37.2%,
+      rgba(205,168,85,0.28) 37.8%,rgba(192,157,80,0.18) 38.4%,
       rgba(185,150,75,0.06) 39%,transparent 39.8%,transparent 100%),
     linear-gradient(115deg,
-      transparent 54%,rgba(178,143,68,0.06) 54.5%,
-      rgba(182,147,70,0.11) 55%,transparent 55.8%),
+      transparent 54%,rgba(178,143,68,0.07) 54.5%,
+      rgba(182,147,70,0.13) 55%,transparent 55.8%),
     radial-gradient(ellipse 140% 60% at 10% 5%,rgba(255,252,245,1) 0%,rgba(252,246,235,0.6) 45%,transparent 70%),
     radial-gradient(ellipse 65% 55% at 90% 88%,rgba(218,200,168,0.28) 0%,transparent 55%),
     linear-gradient(160deg,#faf5ee 0%,#f4ece0 60%,#ede5d4 100%);
 }
-/* 明治神宮を大理石の上に薄く重ねる */
+/* 明治神宮の鳥居 — 固定ID */
 #hero .shrine-overlay{
   position:absolute;inset:0;
-  background:url('https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=1600&q=60') center/cover no-repeat;
-  opacity:0.09;
+  background:url('https://images.unsplash.com/photo-1560620021-3401bf0cd4af?w=1600&q=60') center/cover no-repeat;
+  opacity:0.08;
   mix-blend-mode:multiply;
 }
 #hero::after{
   content:'';position:absolute;inset:0;
-  background:rgba(250,245,238,0.55);
+  background:rgba(250,245,238,0.6);
 }
 .hero-inner{position:relative;z-index:2;max-width:640px;width:100%;}
 .hero-logo{
@@ -442,7 +442,7 @@ footer{background:#3a2e28;padding:52px 32px;text-align:center;}
         <p class="fade d3">派手な装飾ではなく、ワンカラー・グラデーションなど、生活の中に自然に馴染む、整った美しさを大切にしています。</p>
       </div>
       <div class="concept-img fade d2">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&q=80" alt="朝の光">
+        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&q=80" alt="ネイル施術">
       </div>
     </div>
     <div class="pillars">
@@ -595,7 +595,7 @@ footer{background:#3a2e28;padding:52px 32px;text-align:center;}
 <!-- LOCATION — フル幅明治神宮写真 + 地図 -->
 <section id="location" style="padding:0;">
   <div class="location-banner">
-    <img src="https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=1600&q=80" alt="明治神宮">
+    <img src="https://images.unsplash.com/photo-1560620021-3401bf0cd4af?w=1600&q=80" alt="明治神宮鳥居">
     <div class="location-banner-text">
       <h2 class="location-banner-title fade">ロケーション</h2>
       <p class="location-banner-sub fade d1">千駄ヶ谷・渋谷、明治神宮近く、北参道駅徒歩1分</p>
