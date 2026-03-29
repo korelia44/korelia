@@ -413,7 +413,63 @@ footer{background:#3a2e28;padding:52px 32px;text-align:center;}
 
 <!-- HERO -->
 <section id="hero">
-  <!-- shrine overlay -->
+  <!-- SVG装飾: シダ植物左・右・中央鳥居 -->
+  <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="fernGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#b8c4a0" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="#8a9e70" stop-opacity="0.4"/>
+      </linearGradient>
+      <filter id="blur1"><feGaussianBlur stdDeviation="1.5"/></filter>
+      <filter id="blur2"><feGaussianBlur stdDeviation="0.8"/></filter>
+    </defs>
+    <!-- 左シダ 大 -->
+    <g opacity="0.55" transform="translate(-30, 200) rotate(-15)">
+      <ellipse cx="80" cy="300" rx="22" ry="120" fill="url(#fernGrad)" transform="rotate(-20,80,300)"/>
+      <ellipse cx="60" cy="280" rx="18" ry="100" fill="url(#fernGrad)" transform="rotate(-35,60,280)"/>
+      <ellipse cx="100" cy="320" rx="20" ry="110" fill="url(#fernGrad)" transform="rotate(-5,100,320)"/>
+      <ellipse cx="40" cy="260" rx="15" ry="85" fill="#a0b480" opacity="0.6" transform="rotate(-50,40,260)"/>
+      <ellipse cx="120" cy="340" rx="17" ry="95" fill="#a0b480" opacity="0.5" transform="rotate(10,120,340)"/>
+    </g>
+    <!-- 左シダ 小 -->
+    <g opacity="0.4" transform="translate(10, 400) rotate(-10)">
+      <ellipse cx="60" cy="200" rx="14" ry="75" fill="#b0c090" transform="rotate(-25,60,200)"/>
+      <ellipse cx="45" cy="185" rx="12" ry="65" fill="#98ae78" transform="rotate(-40,45,185)"/>
+      <ellipse cx="75" cy="215" rx="13" ry="70" fill="#b0c090" transform="rotate(-10,75,215)"/>
+    </g>
+    <!-- 右下の草 -->
+    <g opacity="0.35" transform="translate(1300, 550) rotate(10)">
+      <ellipse cx="60" cy="180" rx="12" ry="70" fill="#b8c8a0" transform="rotate(20,60,180)"/>
+      <ellipse cx="80" cy="190" rx="10" ry="60" fill="#a8b890" transform="rotate(35,80,190)"/>
+      <ellipse cx="40" cy="170" rx="11" ry="65" fill="#b0c098" transform="rotate(8,40,170)"/>
+    </g>
+    <!-- 右下葉 -->
+    <g opacity="0.3" transform="translate(1350, 720)">
+      <ellipse cx="40" cy="80" rx="8" ry="45" fill="#c0c8a0" transform="rotate(15,40,80)"/>
+      <ellipse cx="55" cy="90" rx="7" ry="40" fill="#b0c090" transform="rotate(30,55,90)"/>
+    </g>
+    <!-- 中央 鳥居（薄く） -->
+    <g opacity="0.1" transform="translate(580, 180)" filter="url(#blur1)">
+      <!-- 笠木 -->
+      <rect x="0" y="0" width="280" height="14" rx="3" fill="#8B6040"/>
+      <!-- 島木 -->
+      <rect x="18" y="20" width="244" height="9" rx="2" fill="#8B6040"/>
+      <!-- 左柱 -->
+      <rect x="30" y="29" width="22" height="180" rx="3" fill="#8B6040"/>
+      <!-- 右柱 -->
+      <rect x="228" y="29" width="22" height="180" rx="3" fill="#8B6040"/>
+      <!-- 貫 -->
+      <rect x="30" y="85" width="222" height="8" rx="2" fill="#8B6040"/>
+      <!-- 奥の本殿屋根 -->
+      <path d="M60 160 L140 130 L220 160 Z" fill="#6a5030" opacity="0.5"/>
+      <rect x="75" y="160" width="130" height="50" fill="#6a5030" opacity="0.4"/>
+    </g>
+    <!-- 大理石SVG金筋 -->
+    <path d="M-10 320 C80 305 160 345 260 328 C360 311 420 278 520 295 C620 312 680 358 800 340 C920 322 1010 285 1120 302 C1230 319 1330 342 1450 330" stroke="#C4965A" stroke-width="2.5" fill="none" opacity="0.14" filter="url(#blur1)"/>
+    <path d="M-10 324 C80 309 160 349 260 332 C360 315 420 282 520 299" stroke="#D4A868" stroke-width="1" fill="none" opacity="0.18" filter="url(#blur2)"/>
+    <path d="M260 328 C280 308 292 282 308 252" stroke="#C4965A" stroke-width="0.9" fill="none" opacity="0.1" filter="url(#blur2)"/>
+    <path d="M200 580 C300 565 400 595 510 580 C620 565 700 540 820 552" stroke="#C4965A" stroke-width="1.5" fill="none" opacity="0.09" filter="url(#blur1)"/>
+  </svg>
   <div class="shrine-overlay"></div>
   <div class="hero-inner">
     <h1 class="hero-logo">KORE'LIA</h1>
@@ -595,8 +651,82 @@ footer{background:#3a2e28;padding:52px 32px;text-align:center;}
 <!-- LOCATION — フル幅明治神宮写真 + 地図 -->
 <section id="location" style="padding:0;">
   <div class="location-banner">
-    <!-- 明治神宮写真 -->
-    <img src="meiji2.jpg" alt="明治神宮">
+    <!-- 神社参道SVG -->
+    <svg style="width:100%;height:100%;position:absolute;inset:0;" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#d8cfc0"/>
+          <stop offset="60%" stop-color="#e8dfd0"/>
+          <stop offset="100%" stop-color="#ede5d5"/>
+        </linearGradient>
+        <linearGradient id="treeG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#8a9e72" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#6a7e54" stop-opacity="0.7"/>
+        </linearGradient>
+        <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="soft"><feGaussianBlur stdDeviation="1.5"/></filter>
+      </defs>
+      <!-- 空 -->
+      <rect width="1440" height="420" fill="url(#skyG)"/>
+      <!-- 霧のような光 -->
+      <ellipse cx="720" cy="200" rx="500" ry="220" fill="rgba(255,248,235,0.35)"/>
+      <ellipse cx="720" cy="150" rx="300" ry="150" fill="rgba(255,250,240,0.25)"/>
+      <!-- 左の木々 -->
+      <ellipse cx="80" cy="200" rx="130" ry="220" fill="url(#treeG)" opacity="0.8"/>
+      <ellipse cx="200" cy="180" rx="110" ry="240" fill="#7a9265" opacity="0.75"/>
+      <ellipse cx="320" cy="220" rx="90" ry="200" fill="#6e8a5a" opacity="0.65"/>
+      <ellipse cx="60" cy="250" rx="90" ry="180" fill="#608050" opacity="0.6"/>
+      <ellipse cx="150" cy="300" rx="70" ry="140" fill="#527045" opacity="0.5"/>
+      <!-- 右の木々 -->
+      <ellipse cx="1360" cy="200" rx="130" ry="220" fill="url(#treeG)" opacity="0.8"/>
+      <ellipse cx="1240" cy="180" rx="110" ry="240" fill="#7a9265" opacity="0.75"/>
+      <ellipse cx="1120" cy="220" rx="90" ry="200" fill="#6e8a5a" opacity="0.65"/>
+      <ellipse cx="1380" cy="250" rx="90" ry="180" fill="#608050" opacity="0.6"/>
+      <ellipse cx="1290" cy="300" rx="70" ry="140" fill="#527045" opacity="0.5"/>
+      <!-- 参道の石畳 -->
+      <path d="M480 420 L620 280 L820 280 L960 420 Z" fill="#c8c0b0" opacity="0.4"/>
+      <path d="M520 420 L640 300 L800 300 L920 420 Z" fill="#d0c8b8" opacity="0.25"/>
+      <!-- 左灯籠 -->
+      <g transform="translate(560, 240)" opacity="0.7">
+        <rect x="0" y="0" width="16" height="60" fill="#9a8060"/>
+        <rect x="-8" y="-12" width="32" height="16" rx="2" fill="#8a7050"/>
+        <rect x="-6" y="-8" width="28" height="12" fill="rgba(255,230,150,0.6)"/>
+        <rect x="-4" y="58" width="24" height="8" fill="#8a7050"/>
+        <rect x="-10" y="64" width="36" height="6" fill="#7a6040"/>
+      </g>
+      <!-- 右灯籠 -->
+      <g transform="translate(864, 240)" opacity="0.7">
+        <rect x="0" y="0" width="16" height="60" fill="#9a8060"/>
+        <rect x="-8" y="-12" width="32" height="16" rx="2" fill="#8a7050"/>
+        <rect x="-6" y="-8" width="28" height="12" fill="rgba(255,230,150,0.6)"/>
+        <rect x="-4" y="58" width="24" height="8" fill="#8a7050"/>
+        <rect x="-10" y="64" width="36" height="6" fill="#7a6040"/>
+      </g>
+      <!-- 鳥居 -->
+      <g opacity="0.75">
+        <!-- 笠木 -->
+        <rect x="530" y="80" width="380" height="20" rx="4" fill="#8B5030"/>
+        <!-- 島木 -->
+        <rect x="555" y="108" width="330" height="13" rx="3" fill="#8B5030"/>
+        <!-- 左柱 -->
+        <rect x="590" y="121" width="28" height="220" rx="3" fill="#7a4428"/>
+        <!-- 右柱 -->
+        <rect x="822" y="121" width="28" height="220" rx="3" fill="#7a4428"/>
+        <!-- 貫 -->
+        <rect x="590" y="195" width="260" height="11" rx="2" fill="#7a4428"/>
+      </g>
+      <!-- 奥の本殿 -->
+      <g opacity="0.45" transform="translate(620, 240)">
+        <path d="M0 60 L100 20 L200 60 Z" fill="#5a3820"/>
+        <rect x="20" y="60" width="160" height="80" fill="#6a4828"/>
+        <rect x="10" y="55" width="180" height="10" fill="#5a3820"/>
+      </g>
+      <!-- 霧のオーバーレイ -->
+      <rect width="1440" height="420" fill="rgba(240,232,218,0.28)"/>
+      <!-- 大理石の縁 左右 -->
+      <rect x="0" y="0" width="80" height="420" fill="rgba(245,238,225,0.6)"/>
+      <rect x="1360" y="0" width="80" height="420" fill="rgba(245,238,225,0.6)"/>
+    </svg>
     <div class="location-banner-text">
       <h2 class="location-banner-title fade">ロケーション</h2>
       <p class="location-banner-sub fade d1">千駄ヶ谷・渋谷、明治神宮近く、北参道駅徒歩1分</p>
