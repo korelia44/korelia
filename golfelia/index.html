@@ -8,14 +8,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --ink: #141410;
+  --ink: #1c1c18;
   --ink-mid: #3a3a32;
   --ink-soft: #6a6a5a;
   --ink-ghost: #9a9a8a;
-  --fairway: #2c3d2a;
-  --fairway-mid: #3d5438;
-  --gold: #c4a45a;
-  --gold-light: #ddc07a;
+  --fairway: #3a4f38;
+  --fairway-mid: #4a6245;
+  --gold: #b89a50;
+  --gold-light: #d4b870;
   --cream: #f8f6f0;
   --cream-dark: #f0ede4;
   --white: #fdfcf9;
@@ -49,8 +49,8 @@ background: var(–fairway);
 position: absolute;
 inset: 0;
 background:
-radial-gradient(ellipse 120% 80% at 60% 30%, rgba(44,61,42,0.0) 0%, rgba(20,20,16,0.85) 100%),
-linear-gradient(160deg, #1e2e1c 0%, #2c3d2a 40%, #1a2418 100%);
+radial-gradient(ellipse 120% 80% at 60% 30%, rgba(58,79,56,0.0) 0%, rgba(28,28,24,0.75) 100%),
+linear-gradient(160deg, #2e422c 0%, #3a4f38 40%, #263524 100%);
 }
 
 /* Fairway lines — CSS only */
@@ -113,7 +113,7 @@ font-family: ‘Cormorant Garamond’, serif;
 font-size: clamp(38px, 8vw, 58px);
 font-weight: 300;
 line-height: 1.25;
-color: var(–cream);
+color: #f5f3ec;
 letter-spacing: 0.02em;
 margin-bottom: 28px;
 opacity: 0;
@@ -127,7 +127,7 @@ color: var(–gold-light);
 
 .hero-sub {
 font-size: 13px;
-color: rgba(248,246,240,0.65);
+color: rgba(245,243,236,0.75);
 line-height: 2.1;
 letter-spacing: 0.05em;
 max-width: 360px;
@@ -236,7 +236,7 @@ margin-top: 10px;
 }
 
 .pain-callout {
-background: var(–fairway);
+background: #3a4f38;
 color: var(–cream);
 padding: 28px 28px;
 margin-top: 32px;
@@ -255,7 +255,7 @@ background: var(–gold);
 .pain-callout p {
 font-size: 14px;
 line-height: 2;
-color: rgba(248,246,240,0.85);
+color: rgba(245,243,236,0.9);
 }
 
 .pain-callout strong {
@@ -427,7 +427,7 @@ flex-shrink: 0;
 
 /* ── CTA section ── */
 .cta-section {
-background: var(–fairway);
+background: #3a4f38;
 position: relative;
 overflow: hidden;
 }
@@ -436,7 +436,7 @@ overflow: hidden;
 content: ‘’;
 position: absolute;
 inset: 0;
-background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(196,164,90,0.06) 0%, transparent 70%);
+background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(196,164,90,0.08) 0%, transparent 70%);
 }
 
 .cta-inner {
@@ -452,7 +452,7 @@ text-align: center;
 font-family: ‘Cormorant Garamond’, serif;
 font-size: 10px;
 letter-spacing: 0.5em;
-color: var(–gold);
+color: var(–gold-light);
 display: block;
 margin-bottom: 24px;
 }
@@ -461,7 +461,7 @@ margin-bottom: 24px;
 font-family: ‘Cormorant Garamond’, serif;
 font-size: clamp(24px, 4vw, 32px);
 font-weight: 300;
-color: var(–cream);
+color: #f5f3ec;
 letter-spacing: 0.04em;
 line-height: 1.6;
 margin-bottom: 16px;
@@ -469,7 +469,7 @@ margin-bottom: 16px;
 
 .cta-body {
 font-size: 13px;
-color: rgba(248,246,240,0.6);
+color: rgba(245,243,236,0.75);
 line-height: 2.1;
 margin-bottom: 48px;
 letter-spacing: 0.04em;
@@ -806,8 +806,8 @@ transform: translateY(0);
       レッスンにお越しください。
     </p>
     <a href="https://note.com/golfelia_" class="cta-btn" style="display:block;margin-bottom:16px;">NOTE で読む</a>
-    <a href="mailto:golfelia44@gmail.com" class="cta-btn" style="display:block;margin-bottom:20px;">レッスンを予約する</a>
-    <span class="cta-note">golfelia44@gmail.com</span>
+    <a href="/cdn-cgi/l/email-protection#a9cec6c5cfccc5c0c89d9de9cec4c8c0c587cac6c4" class="cta-btn" style="display:block;margin-bottom:20px;">レッスンを予約する</a>
+    <span class="cta-note"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="62050d0e04070e0b03565622050f030b0e4c010d0f">[email&#160;protected]</a></span>
   </div>
 </div>
 
@@ -817,18 +817,6 @@ transform: translateY(0);
   <p class="footer-brand">GOLFE'LIA｜観測ログは続く。</p>
 </footer>
 
-<script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12 });
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
-
-</body>
-</html>
+const observer = new IntersectionObserver((entries)
