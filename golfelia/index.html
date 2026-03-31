@@ -1,204 +1,737 @@
 <!DOCTYPE html>
+
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>GOLFE'LIA</title>
+<title>GOLFE'LIA｜100切り設計</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
+:root {
+  --ink: #141410;
+  --ink-mid: #3a3a32;
+  --ink-soft: #6a6a5a;
+  --ink-ghost: #9a9a8a;
+  --fairway: #2c3d2a;
+  --fairway-mid: #3d5438;
+  --gold: #c4a45a;
+  --gold-light: #ddc07a;
+  --cream: #f8f6f0;
+  --cream-dark: #f0ede4;
+  --white: #fdfcf9;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  background: #ffffff;
-  color: #111;
+background: var(–cream);
+color: var(–ink);
+font-family: ‘Noto Serif JP’, serif;
+font-weight: 300;
+line-height: 1.9;
+-webkit-font-smoothing: antialiased;
+overflow-x: hidden;
 }
 
-.container {
-  max-width: 680px;
-  margin: auto;
-  padding: 24px;
+/* ── HERO ── */
+.hero-wrap {
+position: relative;
+min-height: 100svh;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+overflow: hidden;
+background: var(–fairway);
 }
 
-h1 {
-  font-size: 30px;
-  line-height: 1.4;
-  margin-bottom: 20px;
+.hero-bg {
+position: absolute;
+inset: 0;
+background:
+radial-gradient(ellipse 120% 80% at 60% 30%, rgba(44,61,42,0.0) 0%, rgba(20,20,16,0.85) 100%),
+linear-gradient(160deg, #1e2e1c 0%, #2c3d2a 40%, #1a2418 100%);
 }
 
-h2 {
-  font-size: 20px;
-  margin-top: 48px;
+/* Fairway lines — CSS only */
+.fairway-lines {
+position: absolute;
+inset: 0;
+overflow: hidden;
+opacity: 0.07;
+}
+.fairway-lines::before {
+content: ‘’;
+position: absolute;
+top: -20%;
+left: 50%;
+transform: translateX(-50%);
+width: 1px;
+height: 140%;
+background: linear-gradient(to bottom, transparent, var(–gold-light), transparent);
+box-shadow:
+-120px 0 0 0.5px rgba(196,164,90,0.4),
+-60px 0 0 0.5px rgba(196,164,90,0.6),
+60px 0 0 0.5px rgba(196,164,90,0.6),
+120px 0 0 0.5px rgba(196,164,90,0.4),
+-240px 0 0 0.3px rgba(196,164,90,0.2),
+240px 0 0 0.3px rgba(196,164,90,0.2);
 }
 
-p {
-  line-height: 1.9;
-  margin: 12px 0;
+/* Horizon glow */
+.horizon {
+position: absolute;
+bottom: 35%;
+left: 0; right: 0;
+height: 1px;
+background: linear-gradient(90deg, transparent 0%, rgba(196,164,90,0.3) 30%, rgba(196,164,90,0.5) 50%, rgba(196,164,90,0.3) 70%, transparent 100%);
 }
 
-.hero {
-  padding: 40px 0 10px;
+.hero-content {
+position: relative;
+z-index: 2;
+padding: 56px 32px 64px;
+max-width: 640px;
+margin: 0 auto;
+width: 100%;
 }
 
-.box {
-  background: #f5f5f5;
-  padding: 20px;
-  border-radius: 8px;
-  margin-top: 16px;
+.hero-brand {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 11px;
+letter-spacing: 0.5em;
+color: var(–gold);
+font-weight: 400;
+display: block;
+margin-bottom: 40px;
+opacity: 0;
+animation: fadeUp 1.2s ease forwards 0.2s;
 }
 
-.highlight {
-  font-weight: bold;
+.hero-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(38px, 8vw, 58px);
+font-weight: 300;
+line-height: 1.25;
+color: var(–cream);
+letter-spacing: 0.02em;
+margin-bottom: 28px;
+opacity: 0;
+animation: fadeUp 1.2s ease forwards 0.4s;
 }
 
-.cta {
-  display: block;
-  text-align: center;
-  padding: 18px;
-  margin-top: 32px;
-  background: #000;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 6px;
+.hero-title em {
+font-style: italic;
+color: var(–gold-light);
 }
 
-.sub {
-  font-size: 13px;
-  color: #777;
-  text-align: center;
-  margin-top: 8px;
+.hero-sub {
+font-size: 13px;
+color: rgba(248,246,240,0.65);
+line-height: 2.1;
+letter-spacing: 0.05em;
+max-width: 360px;
+opacity: 0;
+animation: fadeUp 1.2s ease forwards 0.7s;
 }
 
-.divider {
-  height: 1px;
-  background: #eee;
-  margin: 40px 0;
+.hero-scroll {
+position: absolute;
+bottom: 32px;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 8px;
+opacity: 0;
+animation: fadeIn 1s ease forwards 1.4s;
 }
+
+.hero-scroll span {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 9px;
+letter-spacing: 0.4em;
+color: rgba(196,164,90,0.6);
+}
+
+.scroll-line {
+width: 1px;
+height: 40px;
+background: linear-gradient(to bottom, rgba(196,164,90,0.6), transparent);
+animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+0%, 100% { opacity: 0.4; transform: scaleY(1); }
+50% { opacity: 1; transform: scaleY(1.2); }
+}
+
+/* ── BODY ── */
+.body-wrap {
+background: var(–white);
+}
+
+.section {
+max-width: 640px;
+margin: 0 auto;
+padding: 80px 32px;
+}
+
+.section + .section {
+border-top: 1px solid rgba(20,20,16,0.08);
+}
+
+.section-eyebrow {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 10px;
+letter-spacing: 0.5em;
+color: var(–gold);
+font-weight: 400;
+display: block;
+margin-bottom: 20px;
+}
+
+.section-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(24px, 4vw, 32px);
+font-weight: 300;
+letter-spacing: 0.04em;
+line-height: 1.5;
+margin-bottom: 32px;
+color: var(–ink);
+}
+
+.body-text {
+font-size: 14px;
+color: var(–ink-mid);
+line-height: 2.1;
+}
+
+/* ── Pain list ── */
+.pain-list {
+list-style: none;
+margin: 32px 0;
+border-top: 1px solid rgba(20,20,16,0.08);
+}
+
+.pain-list li {
+display: flex;
+align-items: baseline;
+gap: 16px;
+padding: 18px 0;
+border-bottom: 1px solid rgba(20,20,16,0.08);
+font-size: 14px;
+color: var(–ink-mid);
+letter-spacing: 0.02em;
+}
+
+.pain-list li::before {
+content: ‘’;
+width: 20px;
+height: 1px;
+background: var(–gold);
+flex-shrink: 0;
+margin-top: 10px;
+}
+
+.pain-callout {
+background: var(–fairway);
+color: var(–cream);
+padding: 28px 28px;
+margin-top: 32px;
+position: relative;
+overflow: hidden;
+}
+
+.pain-callout::before {
+content: ‘’;
+position: absolute;
+left: 0; top: 0; bottom: 0;
+width: 2px;
+background: var(–gold);
+}
+
+.pain-callout p {
+font-size: 14px;
+line-height: 2;
+color: rgba(248,246,240,0.85);
+}
+
+.pain-callout strong {
+color: var(–gold-light);
+font-weight: 400;
+}
+
+/* ── Drill cards ── */
+.drill-grid {
+display: flex;
+flex-direction: column;
+gap: 20px;
+margin-top: 32px;
+}
+
+.drill-card {
+border: 1px solid rgba(20,20,16,0.1);
+padding: 32px 28px;
+position: relative;
+background: var(–white);
+transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.drill-card:hover {
+border-color: var(–gold);
+box-shadow: 0 4px 32px rgba(196,164,90,0.08);
+}
+
+.drill-card::after {
+content: ‘’;
+position: absolute;
+bottom: 0; left: 28px; right: 28px;
+height: 1px;
+background: var(–gold);
+transform: scaleX(0);
+transition: transform 0.4s ease;
+}
+
+.drill-card:hover::after {
+transform: scaleX(1);
+}
+
+.drill-num {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 42px;
+font-weight: 300;
+color: rgba(196,164,90,0.18);
+position: absolute;
+top: 20px;
+right: 24px;
+line-height: 1;
+letter-spacing: -0.02em;
+}
+
+.drill-tag {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 9px;
+letter-spacing: 0.4em;
+color: var(–gold);
+display: block;
+margin-bottom: 10px;
+}
+
+.drill-title {
+font-size: 16px;
+font-weight: 400;
+letter-spacing: 0.03em;
+margin-bottom: 16px;
+color: var(–ink);
+}
+
+.drill-body {
+font-size: 13px;
+color: var(–ink-soft);
+line-height: 2.1;
+}
+
+.drill-body strong {
+color: var(–ink);
+font-weight: 400;
+}
+
+.drill-result {
+margin-top: 20px;
+padding-top: 20px;
+border-top: 1px solid rgba(20,20,16,0.08);
+font-size: 12px;
+color: var(–ink-ghost);
+line-height: 1.9;
+letter-spacing: 0.03em;
+}
+
+.drill-result em {
+font-style: normal;
+color: var(–gold);
+}
+
+/* ── Quote ── */
+.quote-block {
+margin: 40px 0;
+padding: 0 0 0 24px;
+border-left: 1px solid var(–gold);
+}
+
+.quote-block p {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(20px, 3.5vw, 26px);
+font-weight: 300;
+font-style: italic;
+line-height: 1.7;
+color: var(–ink);
+letter-spacing: 0.03em;
+}
+
+/* ── Method ── */
+.method-row {
+display: flex;
+gap: 16px;
+margin: 32px 0;
+}
+
+.method-item {
+flex: 1;
+border: 1px solid rgba(20,20,16,0.1);
+padding: 24px 16px;
+text-align: center;
+background: var(–cream-dark);
+}
+
+.method-num {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 36px;
+font-weight: 300;
+color: var(–gold);
+display: block;
+line-height: 1;
+margin-bottom: 8px;
+}
+
+.method-label {
+font-size: 11px;
+color: var(–ink-soft);
+letter-spacing: 0.05em;
+line-height: 1.6;
+}
+
+.flow-row {
+display: flex;
+align-items: center;
+gap: 12px;
+margin: 28px 0;
+flex-wrap: wrap;
+}
+
+.flow-item {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 14px;
+letter-spacing: 0.1em;
+color: var(–ink-mid);
+padding: 10px 20px;
+border: 1px solid rgba(20,20,16,0.12);
+}
+
+.flow-arrow {
+color: var(–gold);
+font-size: 12px;
+flex-shrink: 0;
+}
+
+/* ── CTA section ── */
+.cta-section {
+background: var(–fairway);
+position: relative;
+overflow: hidden;
+}
+
+.cta-section::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(196,164,90,0.06) 0%, transparent 70%);
+}
+
+.cta-inner {
+position: relative;
+z-index: 1;
+max-width: 640px;
+margin: 0 auto;
+padding: 80px 32px;
+text-align: center;
+}
+
+.cta-eyebrow {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 10px;
+letter-spacing: 0.5em;
+color: var(–gold);
+display: block;
+margin-bottom: 24px;
+}
+
+.cta-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(24px, 4vw, 32px);
+font-weight: 300;
+color: var(–cream);
+letter-spacing: 0.04em;
+line-height: 1.6;
+margin-bottom: 16px;
+}
+
+.cta-body {
+font-size: 13px;
+color: rgba(248,246,240,0.6);
+line-height: 2.1;
+margin-bottom: 48px;
+letter-spacing: 0.04em;
+}
+
+.cta-btn {
+display: inline-block;
+padding: 20px 56px;
+background: transparent;
+border: 1px solid var(–gold);
+color: var(–gold-light);
+text-decoration: none;
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 13px;
+letter-spacing: 0.3em;
+font-weight: 400;
+transition: background 0.4s ease, color 0.4s ease;
+position: relative;
+}
+
+.cta-btn:hover {
+background: var(–gold);
+color: var(–fairway);
+}
+
+.cta-note {
+display: block;
+margin-top: 20px;
+font-size: 11px;
+color: rgba(248,246,240,0.3);
+letter-spacing: 0.1em;
+}
+
+/* ── Footer ── */
+.footer {
+background: var(–ink);
+padding: 32px;
+text-align: center;
+}
+
+.footer-brand {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 11px;
+letter-spacing: 0.4em;
+color: rgba(196,164,90,0.5);
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(24px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+from { opacity: 0; }
+to   { opacity: 1; }
+}
+
+.reveal {
+opacity: 0;
+transform: translateY(20px);
+transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal.visible {
+opacity: 1;
+transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
 </style>
 
 </head>
-
 <body>
 
-<div class="container">
+<!-- HERO -->
 
-<!-- ファーストビュー -->
-<div class="hero">
-<h1>
-100が切れないのは<br>
-スイングの問題じゃない
-</h1>
-
-<p>
-直す場所じゃなく<br>
-<span class="highlight">直す順番を間違えているだけ</span>です
-</p>
+<div class="hero-wrap">
+  <div class="hero-bg"></div>
+  <div class="fairway-lines"></div>
+  <div class="horizon"></div>
+  <div class="hero-content">
+    <span class="hero-brand">GOLFE'LIA</span>
+    <h1 class="hero-title">
+      100が切れないのは、<br>
+      スイングの問題<br>
+      <em>じゃない。</em>
+    </h1>
+    <p class="hero-sub">
+      直す場所より、直す順番。<br>
+      設計があれば、スコアは変わります。
+    </p>
+  </div>
+  <div class="hero-scroll">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
 </div>
 
-<!-- 共感 -->
-<p>
-・いい球とミスがバラバラ<br>
-・レッスンでは良いのにコースで崩れる<br>
-・何を優先して直すか分からない
-</p>
+<!-- BODY -->
 
-<p>
-それは全部<br>
-<span class="highlight">「順番の設計」がない状態</span>です
-</p>
+<div class="body-wrap">
 
-<div class="divider"></div>
+  <!-- Pain -->
 
-<!-- 体験 -->
-<h2>今すぐ試してください</h2>
+  <div class="section reveal">
+    <span class="section-eyebrow">OBSERVATION</span>
+    <h2 class="section-title">心当たりはありませんか</h2>
 
-<div class="box">
+```
+<ul class="pain-list">
+  <li>いい球とミスがラウンドごとにバラバラ</li>
+  <li>レッスンでは良いのにコースで崩れる</li>
+  <li>何を優先して直すべきか分からない</li>
+  <li>直しても直しても、元に戻る</li>
+</ul>
 
-<p class="highlight">スライスが出る人へ</p>
+<div class="pain-callout">
+  <p>それは全部、<strong>「順番の設計」がない状態</strong>です。<br>感覚ではなく設計として整理すると、何をすべきかが見えてきます。</p>
+</div>
+```
 
-<p>
-今、スライスを直そうとしてませんか？
-</p>
+  </div>
 
-<p>
-その前に<br>
-<span class="highlight">前傾をキープしたまま打つ</span><br>
-これだけやってください
-</p>
+  <!-- Drill -->
 
-<p>
-👉 3球だけでOK
-</p>
+  <div class="section reveal">
+    <span class="section-eyebrow">DRILL</span>
+    <h2 class="section-title">今すぐ試してください</h2>
 
-<p>
-もし球が変わるなら<br>
-原因はフェースでも軌道でもありません
-</p>
+```
+<div class="drill-grid">
+  <div class="drill-card reveal reveal-delay-1">
+    <span class="drill-num">01</span>
+    <span class="drill-tag">SLICE</span>
+    <p class="drill-title">スライスが出る人へ</p>
+    <p class="drill-body">
+      今、スライスを「直そう」としていませんか。<br><br>
+      その前に、<strong>前傾をキープしたまま打つ</strong>、<br>
+      これだけを3球やってみてください。
+    </p>
+    <div class="drill-result">
+      球が変わるなら、原因はフェースでも軌道でもありません。<br>
+      <em>順番のミスです。</em>
+    </div>
+  </div>
 
-<p class="highlight">
-順番ミスです
-</p>
+  <div class="drill-card reveal reveal-delay-2">
+    <span class="drill-num">02</span>
+    <span class="drill-tag">SCORE</span>
+    <p class="drill-title">スコアが安定しない人へ</p>
+    <p class="drill-body">
+      ラウンド後の振り返りで、「何が悪かったか」より先に、<br>
+      <strong>「どのホールでリズムが崩れたか」</strong>を見てください。
+    </p>
+    <div class="drill-result">
+      スコアはスイングより先に、<em>判断の積み重ね</em>で動いています。
+    </div>
+  </div>
+</div>
+```
 
+  </div>
+
+  <!-- Insight -->
+
+  <div class="section reveal">
+    <span class="section-eyebrow">INSIGHT</span>
+    <h2 class="section-title">なぜ直しても戻るのか</h2>
+
+```
+<div class="quote-block">
+  <p>多くの人は、直す場所ではなく<br>直す順番で詰まっています。</p>
 </div>
 
-<div class="divider"></div>
-
-<!-- 気づき -->
-<h2>なぜ起きるのか</h2>
-
-<p>
-多くの人は<br>
-直す場所ではなく<br>
-<span class="highlight">直す順番で詰まっています</span>
+<p class="body-text">
+  スイングの「どこか」を直しても戻ってしまうのは、<br>
+  根本の順番が変わっていないからです。<br><br>
+  ゴルフは技術より先に、<br>
+  「見ている場所」がスコアを決めています。
 </p>
+```
 
-<p>
-だから何をやっても戻る
+  </div>
+
+  <!-- Method -->
+
+  <div class="section reveal">
+    <span class="section-eyebrow">METHOD</span>
+    <h2 class="section-title">GOLFE'LIA の設計</h2>
+
+```
+<div class="method-row">
+  <div class="method-item reveal reveal-delay-1">
+    <span class="method-num">1</span>
+    <span class="method-label">スイング<br>1テーマ</span>
+  </div>
+  <div class="method-item reveal reveal-delay-2">
+    <span class="method-num">3</span>
+    <span class="method-label">ドリル<br>最大3つ</span>
+  </div>
+  <div class="method-item reveal reveal-delay-3">
+    <span class="method-num">∞</span>
+    <span class="method-label">再現できる<br>設計</span>
+  </div>
+</div>
+
+<div class="flow-row">
+  <span class="flow-item">原因を観測</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-item">順番を設計</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-item">再現する</span>
+</div>
+
+<p class="body-text">
+  感覚で覚えるのではなく、<br>
+  次のラウンドで再現できる形に整理します。<br><br>
+  GOLFE'LIA は、100切りを目指す人のための観測ログです。
 </p>
+```
 
-<div class="divider"></div>
+  </div>
 
-<!-- 信頼 -->
-<h2>GOLFE'LIA</h2>
-
-<p>
-1スイング1テーマ<br>
-ドリルは最大3つ
-</p>
-
-<p>
-原因 → 順番 → 再現
-</p>
-
-<p>
-感覚ではなく<br>
-再現できる設計にします
-</p>
-
-<div class="divider"></div>
+</div>
 
 <!-- CTA -->
-<h2>続きを知りたい方へ</h2>
 
-<p>
-なぜ順番が崩れるのか<br>
-どうすれば再現できるのか
-</p>
-
-<p>
-ここから先は<br>
-「感覚」ではなく「設計」として解説しています
-</p>
-
-<a href="https://note.com/golfelia_" class="cta">
-▶ 体験の続きをnoteで見る
-</a>
-
-<p class="sub">
-※スマホで3分で読めます
-</p>
-
+<div class="cta-section">
+  <div class="cta-inner reveal">
+    <span class="cta-eyebrow">NOTE</span>
+    <h2 class="cta-title">続きを読む</h2>
+    <p class="cta-body">
+      なぜ順番が崩れるのか。<br>
+      どうすれば再現できるのか。<br>
+      感覚ではなく、設計として解説しています。
+    </p>
+    <a href="https://note.com/golfelia_" class="cta-btn">NOTE で読む</a>
+    <span class="cta-note">スマートフォンで3分</span>
+  </div>
 </div>
+
+<!-- Footer -->
+
+<footer class="footer">
+  <p class="footer-brand">GOLFE'LIA｜観測ログは続く。</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
