@@ -1,627 +1,894 @@
 <!DOCTYPE html>
-
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>GOLFE'LIA｜100切り設計</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
-<style>
-:root {
-  --ink: #1c1c18;
-  --ink-mid: #3d3d35;
-  --ink-soft: #6a6a5a;
-  --ink-ghost: #999988;
-  --green: #3a5036;
-  --green-light: #4a6245;
-  --gold: #b89050;
-  --gold-light: #d4ac6a;
-  --cream: #f7f5ef;
-  --cream-dark: #eeebe2;
-  --white: #fcfaf5;
-  --line: rgba(28,28,24,0.1);
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GOLFE'LIA｜100切りのための体験レッスン</title>
+  <meta name="description" content="100が切れない原因を90分で特定。自己流で遠回りせず、優先順位つきで改善点が分かるゴルフ体験レッスン。東京都渋谷区・完全予約制。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --bg-soft: #fdfbf7;
+      --surface: #ffffff;
+      --text: #1f241d;
+      --text-soft: #596154;
+      --line: rgba(31, 36, 29, 0.12);
+      --green: #2f4735;
+      --green-2: #415a47;
+      --gold: #b78d4b;
+      --gold-2: #d2ac6f;
+      --danger: #9a4e37;
+      --shadow: 0 18px 50px rgba(20, 25, 20, 0.08);
+      --radius: 20px;
+      --radius-sm: 14px;
+      --max: 1120px;
+    }
 
-body {
-background: var(–white);
-color: var(–ink);
-font-family: ‘Noto Serif JP’, serif;
-font-weight: 300;
-line-height: 1.9;
--webkit-font-smoothing: antialiased;
-}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: "Noto Sans JP", sans-serif;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* ── HERO ── */
-.hero {
-background: var(–green);
-padding: 72px 32px 80px;
-position: relative;
-overflow: hidden;
-}
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
 
-.hero::after {
-content: ‘’;
-position: absolute;
-bottom: 0; left: 0; right: 0;
-height: 1px;
-background: linear-gradient(90deg, transparent, var(–gold), transparent);
-}
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
 
-.hero-inner {
-max-width: 600px;
-margin: 0 auto;
-}
+    .section {
+      padding: 84px 0;
+    }
 
-.hero-brand {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 11px;
-letter-spacing: 0.55em;
-color: var(–gold-light);
-font-weight: 400;
-display: block;
-margin-bottom: 44px;
-}
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      font-family: "Cormorant Garamond", serif;
+    }
 
-.hero-title {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: clamp(34px, 7vw, 52px);
-font-weight: 300;
-line-height: 1.3;
-color: #f4f2eb;
-letter-spacing: 0.02em;
-margin-bottom: 28px;
-}
+    .title {
+      margin: 0 0 18px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.35;
+      font-weight: 400;
+      font-family: "Cormorant Garamond", serif;
+      letter-spacing: 0.02em;
+    }
 
-.hero-title em {
-font-style: italic;
-color: var(–gold-light);
-}
+    .lead {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 16px;
+      line-height: 2;
+    }
 
-.hero-sub {
-font-size: 13px;
-color: rgba(244,242,235,0.72);
-line-height: 2.1;
-letter-spacing: 0.04em;
-}
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(14px);
+      background: rgba(247, 244, 238, 0.82);
+      border-bottom: 1px solid rgba(31, 36, 29, 0.08);
+    }
 
-/* ── SECTIONS ── */
-.section {
-max-width: 600px;
-margin: 0 auto;
-padding: 72px 32px;
-border-bottom: 1px solid var(–line);
-}
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: 16px;
+    }
 
-.eyebrow {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 10px;
-letter-spacing: 0.5em;
-color: var(–gold);
-font-weight: 400;
-display: block;
-margin-bottom: 18px;
-}
+    .brand {
+      font-family: "Cormorant Garamond", serif;
+      letter-spacing: 0.18em;
+      font-size: 22px;
+      color: var(--green);
+    }
 
-.sec-title {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: clamp(22px, 4vw, 30px);
-font-weight: 300;
-letter-spacing: 0.04em;
-line-height: 1.5;
-color: var(–ink);
-margin-bottom: 32px;
-}
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-.body-text {
-font-size: 14px;
-color: var(–ink-mid);
-line-height: 2.1;
-}
+    .header-link {
+      font-size: 14px;
+      color: var(--text-soft);
+    }
 
-/* ── Pain list ── */
-.pain-list {
-list-style: none;
-border-top: 1px solid var(–line);
-margin-bottom: 36px;
-}
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 24px;
+      border-radius: 999px;
+      border: 1px solid var(--green);
+      font-weight: 700;
+      font-size: 15px;
+      transition: .25s ease;
+      cursor: pointer;
+    }
 
-.pain-list li {
-display: flex;
-align-items: baseline;
-gap: 16px;
-padding: 16px 0;
-border-bottom: 1px solid var(–line);
-font-size: 14px;
-color: var(–ink-mid);
-}
+    .btn:hover {
+      transform: translateY(-1px);
+    }
 
-.pain-list li::before {
-content: ‘’;
-width: 18px;
-height: 1px;
-background: var(–gold);
-flex-shrink: 0;
-margin-top: 11px;
-}
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      color: #1f241d;
+      border-color: transparent;
+      box-shadow: 0 12px 30px rgba(183, 141, 75, 0.22);
+    }
 
-.callout {
-background: var(–cream-dark);
-border-left: 2px solid var(–gold);
-padding: 24px 24px;
-margin-top: 4px;
-}
+    .btn-secondary {
+      background: transparent;
+      color: var(--green);
+    }
 
-.callout p {
-font-size: 14px;
-color: var(–ink-mid);
-line-height: 2;
-}
+    /* Hero */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(210,172,111,0.18), transparent 28%),
+        linear-gradient(160deg, #203227 0%, #314a38 52%, #2c4132 100%);
+      color: #f6f3ec;
+      padding: 72px 0 88px;
+    }
 
-.callout strong {
-color: var(–ink);
-font-weight: 400;
-}
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+      align-items: center;
+    }
 
-/* ── Drill cards ── */
-.drill-card {
-border: 1px solid var(–line);
-padding: 28px 24px;
-margin-bottom: 16px;
-position: relative;
-background: var(–white);
-}
+    .hero-badge {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
 
-.drill-card + .drill-card {
-margin-top: 0;
-}
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(246,243,236,0.92);
+      font-size: 13px;
+    }
 
-.drill-num {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 36px;
-font-weight: 300;
-color: rgba(184,144,80,0.15);
-position: absolute;
-top: 16px; right: 20px;
-line-height: 1;
-}
+    .hero-brand {
+      display: block;
+      margin-bottom: 20px;
+      font-size: 12px;
+      letter-spacing: 0.35em;
+      color: var(--gold-2);
+      font-family: "Cormorant Garamond", serif;
+    }
 
-.drill-tag {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 9px;
-letter-spacing: 0.4em;
-color: var(–gold);
-display: block;
-margin-bottom: 8px;
-}
+    .hero-title {
+      margin: 0 0 20px;
+      font-size: clamp(36px, 6vw, 64px);
+      line-height: 1.15;
+      font-weight: 400;
+      font-family: "Cormorant Garamond", serif;
+      letter-spacing: 0.02em;
+    }
 
-.drill-title {
-font-size: 15px;
-font-weight: 400;
-color: var(–ink);
-margin-bottom: 14px;
-letter-spacing: 0.02em;
-}
+    .hero-title strong {
+      color: #fff;
+      font-weight: 500;
+    }
 
-.drill-body {
-font-size: 13px;
-color: var(–ink-soft);
-line-height: 2.1;
-}
+    .hero-title em {
+      font-style: normal;
+      color: var(--gold-2);
+    }
 
-.drill-body strong {
-color: var(–ink);
-font-weight: 400;
-}
+    .hero-text {
+      margin: 0 0 28px;
+      color: rgba(246,243,236,0.82);
+      font-size: 16px;
+      line-height: 2;
+    }
 
-.drill-result {
-margin-top: 18px;
-padding-top: 16px;
-border-top: 1px solid var(–line);
-font-size: 12px;
-color: var(–ink-ghost);
-line-height: 1.9;
-}
+    .hero-points {
+      display: grid;
+      gap: 10px;
+      margin: 0 0 32px;
+      padding: 0;
+      list-style: none;
+    }
 
-.drill-result em {
-font-style: normal;
-color: var(–gold);
-}
+    .hero-points li {
+      position: relative;
+      padding-left: 28px;
+      color: rgba(246,243,236,0.92);
+      font-size: 15px;
+    }
 
-/* ── Quote ── */
-.quote {
-border-left: 1px solid var(–gold);
-padding: 6px 0 6px 22px;
-margin: 28px 0;
-}
+    .hero-points li::before {
+      content: "✓";
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: var(--gold-2);
+      font-weight: 700;
+    }
 
-.quote p {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: clamp(18px, 3vw, 24px);
-font-weight: 300;
-font-style: italic;
-line-height: 1.7;
-color: var(–ink);
-letter-spacing: 0.03em;
-}
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
 
-/* ── Method ── */
-.method-row {
-display: flex;
-gap: 12px;
-margin: 28px 0;
-}
+    .hero-note {
+      font-size: 13px;
+      color: rgba(246,243,236,0.7);
+    }
 
-.method-item {
-flex: 1;
-padding: 22px 12px;
-text-align: center;
-background: var(–cream);
-border: 1px solid var(–line);
-}
+    .hero-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
 
-.method-num {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 32px;
-font-weight: 300;
-color: var(–gold);
-display: block;
-line-height: 1;
-margin-bottom: 8px;
-}
+    .hero-card-title {
+      margin: 0 0 16px;
+      font-size: 24px;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 400;
+      color: #fff;
+    }
 
-.method-label {
-font-size: 11px;
-color: var(–ink-soft);
-line-height: 1.6;
-letter-spacing: 0.03em;
-}
+    .meta-list {
+      display: grid;
+      gap: 14px;
+    }
 
-.flow-row {
-display: flex;
-align-items: center;
-gap: 10px;
-margin: 24px 0;
-flex-wrap: wrap;
-}
+    .meta-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      color: rgba(246,243,236,0.88);
+      font-size: 14px;
+    }
 
-.flow-item {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 13px;
-letter-spacing: 0.1em;
-color: var(–ink-mid);
-padding: 9px 18px;
-border: 1px solid var(–line);
-background: var(–cream);
-}
+    .meta-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
 
-.flow-arrow {
-color: var(–gold);
-font-size: 12px;
-}
+    .meta-label {
+      color: rgba(246,243,236,0.62);
+    }
 
-/* ── Lesson ── */
-.lesson-card {
-border: 1px solid var(–line);
-margin-top: 28px;
-overflow: hidden;
-}
+    .meta-value strong {
+      font-size: 26px;
+      color: var(--gold-2);
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+    }
 
-.lesson-row {
-display: flex;
-align-items: baseline;
-gap: 24px;
-padding: 16px 24px;
-border-bottom: 1px solid var(–line);
-}
+    /* Problem */
+    .problem-grid,
+    .value-grid,
+    .method-grid,
+    .voice-grid,
+    .faq-grid {
+      display: grid;
+      gap: 20px;
+    }
 
-.lesson-row:last-child { border-bottom: none; }
+    .problem-grid {
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 36px;
+    }
 
-.lesson-label {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 9px;
-letter-spacing: 0.35em;
-color: var(–gold);
-flex-shrink: 0;
-width: 32px;
-}
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
 
-.lesson-val {
-font-size: 14px;
-color: var(–ink-mid);
-line-height: 1.8;
-}
+    .problem-card h3,
+    .value-card h3,
+    .method-card h3,
+    .voice-card h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
 
-.lesson-price {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 24px;
-font-weight: 300;
-color: var(–ink);
-}
+    .problem-card p,
+    .value-card p,
+    .method-card p,
+    .voice-card p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 15px;
+      line-height: 1.9;
+    }
 
-.lesson-note {
-display: block;
-font-size: 11px;
-color: var(–ink-ghost);
-margin-top: 3px;
-}
+    .problem-num,
+    .method-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 16px;
+      border-radius: 50%;
+      background: rgba(183, 141, 75, 0.12);
+      color: var(--gold);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 24px;
+    }
 
-/* ── CTA section ── */
-.cta-wrap {
-background: var(–green);
-padding: 80px 32px;
-text-align: center;
-}
+    .quote-box {
+      margin-top: 28px;
+      padding: 24px 28px;
+      border-left: 4px solid var(--gold);
+      background: #f3eee4;
+      border-radius: 0 16px 16px 0;
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.9;
+    }
 
-.cta-inner {
-max-width: 480px;
-margin: 0 auto;
-}
+    /* Value */
+    .value-grid {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 36px;
+    }
 
-.cta-eyebrow {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 10px;
-letter-spacing: 0.5em;
-color: var(–gold-light);
-display: block;
-margin-bottom: 20px;
-}
+    .value-icon {
+      width: 54px;
+      height: 54px;
+      margin-bottom: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(183,141,75,0.16), rgba(47,71,53,0.08));
+      color: var(--green);
+      font-size: 22px;
+      font-weight: 700;
+    }
 
-.cta-title {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: clamp(22px, 4vw, 30px);
-font-weight: 300;
-color: #f4f2eb;
-letter-spacing: 0.04em;
-line-height: 1.6;
-margin-bottom: 14px;
-}
+    /* Method */
+    .method-grid {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 36px;
+    }
 
-.cta-body {
-font-size: 13px;
-color: rgba(244,242,235,0.72);
-line-height: 2.1;
-margin-bottom: 40px;
-letter-spacing: 0.04em;
-}
+    .method-card {
+      position: relative;
+      overflow: hidden;
+    }
 
-.cta-btn {
-display: block;
-padding: 18px 40px;
-border: 1px solid var(–gold);
-color: #f4f2eb;
-text-decoration: none;
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 13px;
-letter-spacing: 0.28em;
-font-weight: 400;
-margin-bottom: 12px;
-transition: background 0.3s ease, color 0.3s ease;
-}
+    .method-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -40px auto;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(183, 141, 75, 0.08);
+    }
 
-.cta-btn:hover {
-background: var(–gold);
-color: var(–green);
-}
+    .method-summary {
+      margin-top: 34px;
+      padding: 26px 28px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #2f4735, #3e5a46);
+      color: rgba(255,255,255,0.9);
+    }
 
-.cta-btn.primary {
-background: var(–gold);
-color: var(–green);
-border-color: var(–gold);
-}
+    .method-summary strong {
+      color: #fff;
+    }
 
-.cta-btn.primary:hover {
-background: var(–gold-light);
-border-color: var(–gold-light);
-}
+    /* For who */
+    .forwho-wrap {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 36px;
+    }
 
-.cta-note {
-display: block;
-margin-top: 16px;
-font-size: 11px;
-color: rgba(244,242,235,0.4);
-letter-spacing: 0.08em;
-}
+    .check-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+    }
 
-/* ── Footer ── */
-.footer {
-background: var(–ink);
-padding: 28px 32px;
-text-align: center;
-}
+    .check-list li {
+      position: relative;
+      padding-left: 28px;
+      color: var(--text-soft);
+      font-size: 15px;
+    }
 
-.footer p {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 11px;
-letter-spacing: 0.4em;
-color: rgba(184,144,80,0.5);
-}
-</style>
+    .check-list li::before {
+      content: "●";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--gold);
+      font-size: 12px;
+      line-height: 2.2;
+    }
 
+    /* Lesson */
+    .lesson-box {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      margin-top: 36px;
+      align-items: start;
+    }
+
+    .lesson-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .lesson-detail {
+      display: grid;
+      gap: 14px;
+    }
+
+    .lesson-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .lesson-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .lesson-row dt {
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    .lesson-row dd {
+      margin: 0;
+      text-align: right;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .price {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 42px;
+      line-height: 1;
+      color: var(--green);
+      font-weight: 500;
+    }
+
+    .lesson-points {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .lesson-points li {
+      position: relative;
+      padding-left: 26px;
+      color: var(--text-soft);
+      font-size: 15px;
+    }
+
+    .lesson-points li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .mini-cta {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .warning-box {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 14px;
+      background: #f9f4ec;
+      border: 1px solid rgba(183,141,75,0.2);
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    /* Voice */
+    .voice-grid {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 36px;
+    }
+
+    .voice-card {
+      border-style: dashed;
+      background: #fffefb;
+    }
+
+    .voice-card .label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(183,141,75,0.12);
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* FAQ */
+    .faq-grid {
+      margin-top: 30px;
+    }
+
+    details.faq-item {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px 22px;
+      box-shadow: var(--shadow);
+    }
+
+    details.faq-item + details.faq-item {
+      margin-top: 14px;
+    }
+
+    details summary {
+      list-style: none;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 16px;
+      position: relative;
+      padding-right: 30px;
+    }
+
+    details summary::-webkit-details-marker { display: none; }
+
+    details summary::after {
+      content: "+";
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: var(--gold);
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    .faq-answer {
+      margin-top: 14px;
+      color: var(--text-soft);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    /* CTA */
+    .cta {
+      background:
+        radial-gradient(circle at top left, rgba(210,172,111,0.16), transparent 24%),
+        linear-gradient(160deg, #24372c, #304738 60%, #24372c);
+      color: #f6f3ec;
+      text-align: center;
+    }
+
+    .cta-box {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 10px 0 0;
+    }
+
+    .cta-title {
+      margin: 0 0 16px;
+      font-size: clamp(30px, 4.2vw, 48px);
+      line-height: 1.3;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 400;
+    }
+
+    .cta-text {
+      margin: 0 auto 28px;
+      max-width: 760px;
+      color: rgba(246,243,236,0.82);
+      font-size: 16px;
+      line-height: 2;
+    }
+
+    .cta-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .cta .btn-secondary {
+      color: #f6f3ec;
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .cta-note {
+      margin-top: 16px;
+      color: rgba(246,243,236,0.62);
+      font-size: 13px;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 28px 0 100px;
+      background: #182119;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+    }
+
+    /* Sticky CTA */
+    .sticky-cta {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 50;
+      display: none;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(31,36,29,0.1);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+    }
+
+    .sticky-cta a {
+      flex: 1;
+      min-height: 50px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .sticky-main {
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      color: #1f241d;
+    }
+
+    .sticky-sub {
+      border: 1px solid var(--line);
+      color: var(--green);
+      background: #fff;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .lesson-box,
+      .problem-grid,
+      .value-grid,
+      .method-grid,
+      .voice-grid,
+      .forwho-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .header-nav .header-link {
+        display: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .section {
+        padding: 68px 0;
+      }
+
+      .hero {
+        padding: 48px 0 72px;
+      }
+
+      .hero-card {
+        padding: 22px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-cta,
+      .mini-cta,
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .lesson-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .lesson-row dd {
+        text-align: left;
+      }
+
+      .sticky-cta {
+        display: flex;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- HERO -->
-
-<div class="hero">
-  <div class="hero-inner">
-    <span class="hero-brand">GOLFE'LIA</span>
-    <h1 class="hero-title">
-      100が切れないのは、<br>
-      スイングの問題<br>
-      <em>じゃない。</em>
-    </h1>
-    <p class="hero-sub">
-      直す場所より、直す順番。<br>
-      設計があれば、スコアは変わります。
-    </p>
-  </div>
-</div>
-
-<!-- Pain -->
-
-<div class="section">
-  <span class="eyebrow">OBSERVATION</span>
-  <h2 class="sec-title">心当たりはありませんか</h2>
-  <ul class="pain-list">
-    <li>いい球とミスがラウンドごとにバラバラ</li>
-    <li>レッスンでは良いのにコースで崩れる</li>
-    <li>何を優先して直すべきか分からない</li>
-    <li>直しても直しても、元に戻る</li>
-  </ul>
-  <div class="callout">
-    <p>それは全部、<strong>「順番の設計」がない状態</strong>です。<br>感覚ではなく設計として整理すると、何をすべきかが見えてきます。</p>
-  </div>
-</div>
-
-<!-- Drill -->
-
-<div class="section">
-  <span class="eyebrow">DRILL</span>
-  <h2 class="sec-title">今すぐ試してください</h2>
-
-  <div class="drill-card">
-    <span class="drill-num">01</span>
-    <span class="drill-tag">SLICE</span>
-    <p class="drill-title">スライスが出る人へ</p>
-    <p class="drill-body">
-      今、スライスを「直そう」としていませんか。<br><br>
-      その前に、<strong>前傾をキープしたまま打つ</strong>、<br>
-      これだけを3球やってみてください。
-    </p>
-    <div class="drill-result">
-      球が変わるなら、原因はフェースでも軌道でもありません。<br>
-      <em>順番のミスです。</em>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="brand">GOLFE'LIA</a>
+      <nav class="header-nav">
+        <a class="header-link" href="#problem">悩み</a>
+        <a class="header-link" href="#method">レッスン内容</a>
+        <a class="header-link" href="#price">料金</a>
+        <a class="btn btn-primary" href="mailto:golfelia44@gmail.com?subject=体験レッスン予約希望">体験を予約する</a>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <div class="drill-card">
-    <span class="drill-num">02</span>
-    <span class="drill-tag">SCORE</span>
-    <p class="drill-title">スコアが安定しない人へ</p>
-    <p class="drill-body">
-      ラウンド後の振り返りで、「何が悪かったか」より先に、<br>
-      <strong>「どのホールでリズムが崩れたか」</strong>を見てください。
-    </p>
-    <div class="drill-result">
-      スコアはスイングより先に、<em>判断の積み重ね</em>で動いています。
-    </div>
-  </div>
-</div>
+  <main>
 
-<!-- Insight -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="hero-brand">GOLFE'LIA</span>
 
-<div class="section">
-  <span class="eyebrow">INSIGHT</span>
-  <h2 class="sec-title">なぜ直しても戻るのか</h2>
-  <div class="quote">
-    <p>多くの人は、直す場所ではなく<br>直す順番で詰まっています。</p>
-  </div>
-  <p class="body-text">
-    スイングの「どこか」を直しても戻ってしまうのは、<br>
-    根本の順番が変わっていないからです。<br><br>
-    ゴルフは技術より先に、<br>
-    「見ている場所」がスコアを決めています。
-  </p>
-</div>
+          <div class="hero-badge">
+            <span class="chip">東京都渋谷区</span>
+            <span class="chip">90分体験レッスン</span>
+            <span class="chip">完全予約制</span>
+          </div>
 
-<!-- Method -->
+          <h1 class="hero-title">
+            100が切れない原因を、<br>
+            <strong>90分でひとつに絞る。</strong>
+          </h1>
 
-<div class="section">
-  <span class="eyebrow">METHOD</span>
-  <h2 class="sec-title">GOLFE'LIA の設計</h2>
+          <p class="hero-text">
+            練習しているのにスコアが伸びない。  
+            レッスンでは打てるのにコースで崩れる。  
+            それは才能不足ではなく、<em>直す順番がズレている</em>だけかもしれません。  
+            GOLFE'LIAは、あなたのスイングとプレーを観測し、<strong>今いちばん先に直すべき1点</strong>を明確にする体験レッスンです。
+          </p>
 
-  <div class="method-row">
-    <div class="method-item">
-      <span class="method-num">1</span>
-      <span class="method-label">スイング<br>1テーマ</span>
-    </div>
-    <div class="method-item">
-      <span class="method-num">3</span>
-      <span class="method-label">ドリル<br>最大3つ</span>
-    </div>
-    <div class="method-item">
-      <span class="method-num">∞</span>
-      <span class="method-label">再現できる<br>設計</span>
-    </div>
-  </div>
+          <ul class="hero-points">
+            <li>自己流で何を直せばいいか分からない方へ</li>
+            <li>コースで崩れる理由を整理したい方へ</li>
+            <li>100切りに必要な改善の優先順位を知りたい方へ</li>
+          </ul>
 
-  <div class="flow-row">
-    <span class="flow-item">原因を観測</span>
-    <span class="flow-arrow">→</span>
-    <span class="flow-item">順番を設計</span>
-    <span class="flow-arrow">→</span>
-    <span class="flow-item">再現する</span>
-  </div>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="mailto:golfelia44@gmail.com?subject=体験レッスン予約希望">体験レッスンを予約する</a>
+            <a class="btn btn-secondary" href="https://note.com/golfelia_" target="_blank" rel="noopener noreferrer">まずは note を読む</a>
+          </div>
 
-  <p class="body-text">
-    感覚で覚えるのではなく、<br>
-    次のラウンドで再現できる形に整理します。<br><br>
-    GOLFE'LIA は、100切りを目指す人のための観測ログです。
-  </p>
-</div>
+          <p class="hero-note">
+            初回体験 90分 / ¥15,000 / 完全予約制
+          </p>
+        </div>
 
-<!-- Lesson -->
+        <aside class="hero-card">
+          <h2 class="hero-card-title">このレッスンで分かること</h2>
 
-<div class="section">
-  <span class="eyebrow">LESSON</span>
-  <h2 class="sec-title">体験レッスン</h2>
+          <div class="meta-list">
+            <div class="meta-item">
+              <span class="meta-label">分かること 01</span>
+              <span class="meta-value">なぜコースで崩れるのか</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">分かること 02</span>
+              <span class="meta-value">今すぐ直すべき優先順位</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">分かること 03</span>
+              <span class="meta-value">自分で続けられる練習法</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">体験料金</span>
+              <span class="meta-value"><strong>¥15,000</strong></span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-  <div class="lesson-card">
-    <div class="lesson-row">
-      <span class="lesson-label">内容</span>
-      <span class="lesson-val">スイング観測・課題の設計・ドリル指導</span>
-    </div>
-    <div class="lesson-row">
-      <span class="lesson-label">時間</span>
-      <span class="lesson-val">90分</span>
-    </div>
-    <div class="lesson-row">
-      <span class="lesson-label">料金</span>
-      <span class="lesson-val"><span class="lesson-price">¥15,000</span></span>
-    </div>
-    <div class="lesson-row">
-      <span class="lesson-label">場所</span>
-      <span class="lesson-val">東京都渋谷区<span class="lesson-note">詳細はご予約後にご案内します</span></span>
-    </div>
-    <div class="lesson-row">
-      <span class="lesson-label">予約</span>
-      <span class="lesson-val">完全予約制</span>
-    </div>
-  </div>
+    <section class="section" id="problem">
+      <div class="container">
+        <span class="eyebrow">PROBLEM</span>
+        <h2 class="title">こんな悩みがある方のためのレッスンです</h2>
+        <p class="lead">
+          もし1つでも当てはまるなら、あなたに必要なのは「もっと練習すること」ではなく、  
+          <strong>何から直すかを整理すること</strong>です。
+        </p>
 
-  <p class="body-text" style="margin-top:28px;">
-    1回のレッスンで、今のスイングの「どこから直すべきか」を整理します。<br><br>
-    感覚ではなく、設計として。<br>
-    次のラウンドで再現できる状態にして終わります。
-  </p>
-</div>
+        <div class="problem-grid">
+          <article class="card problem-card">
+            <div class="problem-num">1</div>
+            <h3>練習場では当たるのに、コースで崩れる</h3>
+            <p>その場では打てても、ラウンドになると再現できない。感覚ベースの修正だけでは、本番で戻りやすくなります。</p>
+          </article>
 
-<!-- CTA -->
+          <article class="card problem-card">
+            <div class="problem-num">2</div>
+            <h3>スライス、ダフリ、トップが日によって変わる</h3>
+            <p>症状だけ追いかけると、毎回違う修正になりがちです。根本原因と優先順位を整理しないと改善が安定しません。</p>
+          </article>
 
-<div class="cta-wrap">
-  <div class="cta-inner">
-    <span class="cta-eyebrow">RESERVE</span>
-    <h2 class="cta-title">体験レッスンを予約する</h2>
-    <p class="cta-body">
-      完全予約制。東京都渋谷区。<br>
-      90分　¥15,000<br><br>
-      まずはnoteで設計の考え方を読んでから、<br>
-      レッスンにお越しください。
-    </p>
-    <a href="mailto:golfelia44@gmail.com" class="cta-btn primary">レッスンを予約する</a>
-    <a href="https://note.com/golfelia_" class="cta-btn">NOTE で読む</a>
-    <span class="cta-note">golfelia44@gmail.com</span>
-  </div>
-</div>
+          <article class="card problem-card">
+            <div class="problem-num">3</div>
+            <h3>動画やSNSを見ても、結局何をやればいいか分からない</h3>
+            <p>情報が多いほど、逆に遠回りになります。今のあなたに必要なことは、知識の追加より「削ること」です。</p>
+          </article>
 
-<!-- Footer -->
-
-<footer class="footer">
-  <p>GOLFE'LIA｜観測ログは続く。</p>
-</footer>
-
-</body>
-</html>
+          <article class="card problem-card">
+            <div class="problem-num">4</div>
+            <h3>100切りしたいのに、毎回90台後半〜110前後を行き来する</h3>
+            <p
