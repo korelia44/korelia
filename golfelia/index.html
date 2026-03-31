@@ -8,71 +8,89 @@
 <style>
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-family: "Helvetica Neue", Arial, sans-serif;
   background: #ffffff;
   color: #111;
+  letter-spacing: 0.03em;
 }
 
 .container {
-  max-width: 680px;
+  max-width: 720px;
   margin: auto;
-  padding: 24px;
+  padding: 40px 24px;
 }
 
+/* タイポ */
 h1 {
-  font-size: 30px;
-  line-height: 1.4;
-  margin-bottom: 20px;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 28px;
 }
 
 h2 {
-  font-size: 20px;
-  margin-top: 48px;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 80px;
+  margin-bottom: 16px;
 }
 
 p {
-  line-height: 1.9;
-  margin: 12px 0;
+  font-size: 15px;
+  line-height: 2;
+  color: #333;
 }
 
-.hero {
-  padding: 40px 0 10px;
+/* 区切り */
+.divider {
+  width: 40px;
+  height: 1px;
+  background: #ccc;
+  margin: 48px 0;
 }
 
+/* ボックス */
 .box {
-  background: #f5f5f5;
-  padding: 20px;
-  border-radius: 8px;
-  margin-top: 16px;
+  border: 1px solid #eee;
+  padding: 28px;
+  margin-top: 20px;
+  background: #fafafa;
 }
 
+/* 強調 */
 .highlight {
-  font-weight: bold;
+  color: #000;
+  font-weight: 600;
 }
 
+/* CTA */
 .cta {
   display: block;
-  text-align: center;
+  margin-top: 60px;
   padding: 18px;
-  margin-top: 32px;
-  background: #000;
-  color: #fff;
+  text-align: center;
   text-decoration: none;
-  font-weight: bold;
-  border-radius: 6px;
+  color: #fff;
+  background: #000;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  transition: 0.3s;
+}
+
+.cta:hover {
+  opacity: 0.85;
 }
 
 .sub {
-  font-size: 13px;
-  color: #777;
   text-align: center;
-  margin-top: 8px;
+  font-size: 12px;
+  color: #888;
+  margin-top: 10px;
 }
 
-.divider {
-  height: 1px;
-  background: #eee;
-  margin: 40px 0;
+/* 余白演出 */
+.spacer {
+  height: 40px;
 }
 </style>
 
@@ -82,61 +100,59 @@ p {
 
 <div class="container">
 
-<!-- ファーストビュー -->
-<div class="hero">
+<!-- ファースト -->
 <h1>
 100が切れないのは<br>
-スイングの問題じゃない
+スイングの問題ではない
 </h1>
 
 <p>
-直す場所じゃなく<br>
-<span class="highlight">直す順番を間違えているだけ</span>です
+問題は「どこを直すか」ではなく<br>
+<span class="highlight">どの順番で直しているか</span>です
 </p>
-</div>
+
+<div class="divider"></div>
 
 <!-- 共感 -->
 <p>
-・いい球とミスがバラバラ<br>
-・レッスンでは良いのにコースで崩れる<br>
-・何を優先して直すか分からない
+練習では当たるのに崩れる  
+いい球とミスが混在する  
+何を優先すればいいか分からない
 </p>
 
 <p>
-それは全部<br>
-<span class="highlight">「順番の設計」がない状態</span>です
+それは技術ではなく<br>
+<span class="highlight">設計が存在していない状態</span>です
 </p>
 
 <div class="divider"></div>
 
 <!-- 体験 -->
-<h2>今すぐ試してください</h2>
+<h2>試してください</h2>
 
 <div class="box">
 
-<p class="highlight">スライスが出る人へ</p>
-
-<p>
-今、スライスを直そうとしてませんか？
-</p>
-
-<p>
-その前に<br>
-<span class="highlight">前傾をキープしたまま打つ</span><br>
-これだけやってください
-</p>
-
-<p>
-👉 3球だけでOK
-</p>
-
-<p>
-もし球が変わるなら<br>
-原因はフェースでも軌道でもありません
-</p>
-
 <p class="highlight">
-順番ミスです
+スライスが出る場合
+</p>
+
+<p>
+フェースや軌道を修正する前に<br>
+前傾を維持したまま打つ
+</p>
+
+<div class="spacer"></div>
+
+<p>
+3球で構いません
+</p>
+
+<div class="spacer"></div>
+
+<p>
+球が変わるのであれば  
+原因は動きではなく  
+<span class="highlight">順序の破綻</span>です
 </p>
 
 </div>
@@ -144,58 +160,63 @@ p {
 <div class="divider"></div>
 
 <!-- 気づき -->
-<h2>なぜ起きるのか</h2>
+<h2>本質</h2>
 
 <p>
-多くの人は<br>
-直す場所ではなく<br>
-<span class="highlight">直す順番で詰まっています</span>
+多くの人は  
+誤った場所を直しているのではなく  
+<span class="highlight">誤った順番で直している</span>
 </p>
 
 <p>
-だから何をやっても戻る
+その結果  
+一時的に良くなっても  
+再現できず戻る
 </p>
 
 <div class="divider"></div>
 
-<!-- 信頼 -->
+<!-- 定義 -->
 <h2>GOLFE'LIA</h2>
 
 <p>
-1スイング1テーマ<br>
+1スイング1テーマ  
 ドリルは最大3つ
 </p>
+
+<div class="spacer"></div>
 
 <p>
 原因 → 順番 → 再現
 </p>
 
+<div class="spacer"></div>
+
 <p>
-感覚ではなく<br>
-再現できる設計にします
+感覚ではなく  
+<span class="highlight">再現可能な設計</span>として扱う
 </p>
 
 <div class="divider"></div>
 
 <!-- CTA -->
-<h2>続きを知りたい方へ</h2>
+<h2>続き</h2>
 
 <p>
-なぜ順番が崩れるのか<br>
+なぜ順番が崩れるのか  
 どうすれば再現できるのか
 </p>
 
 <p>
-ここから先は<br>
-「感覚」ではなく「設計」として解説しています
+構造として整理しています
 </p>
 
 <a href="https://note.com/golfelia_" class="cta">
-▶ 体験の続きをnoteで見る
+VIEW NOTE
 </a>
 
 <p class="sub">
-※スマホで3分で読めます
+※数分で読めます
 </p>
 
 </div>
