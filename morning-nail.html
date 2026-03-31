@@ -13,14 +13,40 @@
 body{
 font-family: 'Noto Serif JP', serif;
 margin:0;
-background:#faf6f2;
 color:#3a2e28;
 line-height:1.9;
+
+/* 大理石背景 */
+background-image: url('marble.jpg');
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
 }
-section{padding:80px 24px;}
-.wrap{max-width:900px;margin:0 auto;}
-h1,h2{text-align:center;margin-bottom:30px;}
-p{text-align:center;margin:6px 0;}
+
+/* セクションに透過レイヤー */
+section{
+padding:80px 24px;
+background: rgba(255,255,255,0.88);
+backdrop-filter: blur(3px);
+}
+
+.wrap{
+max-width:900px;
+margin:0 auto;
+}
+
+h1,h2{
+text-align:center;
+margin-bottom:30px;
+letter-spacing:1px;
+}
+
+p{
+text-align:center;
+margin:6px 0;
+}
+
+/* ボタン */
 .btn{
 display:inline-block;
 padding:16px 32px;
@@ -28,12 +54,21 @@ background:#8b6f5c;
 color:#fff;
 text-decoration:none;
 margin-top:20px;
+border-radius:4px;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+transition:0.3s;
 }
+
+.btn:hover{
+opacity:0.9;
+}
+
 .note{
 font-size:14px;
 color:#7a6a60;
 margin-top:10px;
 }
+
 </style>
 
 </head>
@@ -70,7 +105,7 @@ margin-top:10px;
 
 <p class="note">
 ※ソフトジェルオフ込み<br>
-※ハードジェル・スカルプは別途<br>
+※ハードジェル・スカルプは別途料金となります
 </p>
 
 <div style="text-align:center;">
