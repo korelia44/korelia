@@ -517,6 +517,60 @@ letter-spacing: 0.4em;
 color: rgba(196,164,90,0.5);
 }
 
+/* ── Lesson card ── */
+.lesson-card {
+border: 1px solid rgba(20,20,16,0.1);
+margin-top: 32px;
+overflow: hidden;
+}
+
+.lesson-main {
+padding: 8px 0;
+}
+
+.lesson-detail-row {
+display: flex;
+align-items: baseline;
+gap: 24px;
+padding: 18px 28px;
+border-bottom: 1px solid rgba(20,20,16,0.07);
+}
+
+.lesson-detail-row:last-child {
+border-bottom: none;
+}
+
+.lesson-label {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 10px;
+letter-spacing: 0.3em;
+color: var(–gold);
+flex-shrink: 0;
+width: 36px;
+}
+
+.lesson-value {
+font-size: 14px;
+color: var(–ink-mid);
+line-height: 1.8;
+}
+
+.lesson-price {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 26px;
+font-weight: 300;
+color: var(–ink);
+letter-spacing: 0.05em;
+}
+
+.lesson-note {
+display: block;
+font-size: 11px;
+color: var(–ink-ghost);
+margin-top: 3px;
+letter-spacing: 0.03em;
+}
+
 /* ── Animations ── */
 @keyframes fadeUp {
 from { opacity: 0; transform: translateY(24px); }
@@ -696,21 +750,64 @@ transform: translateY(0);
 
   </div>
 
+  <!-- Lesson -->
+
+  <div class="section reveal">
+    <span class="section-eyebrow">LESSON</span>
+    <h2 class="section-title">体験レッスン</h2>
+
+```
+<div class="lesson-card">
+  <div class="lesson-main">
+    <div class="lesson-detail-row">
+      <span class="lesson-label">内容</span>
+      <span class="lesson-value">スイング観測・課題の設計・ドリル指導</span>
+    </div>
+    <div class="lesson-detail-row">
+      <span class="lesson-label">時間</span>
+      <span class="lesson-value">90分</span>
+    </div>
+    <div class="lesson-detail-row">
+      <span class="lesson-label">料金</span>
+      <span class="lesson-value lesson-price">¥15,000</span>
+    </div>
+    <div class="lesson-detail-row">
+      <span class="lesson-label">場所</span>
+      <span class="lesson-value">東京都渋谷区<br><span class="lesson-note">詳細はご予約後にご案内します</span></span>
+    </div>
+    <div class="lesson-detail-row">
+      <span class="lesson-label">予約</span>
+      <span class="lesson-value">完全予約制</span>
+    </div>
+  </div>
+</div>
+
+<p class="body-text" style="margin-top:28px;">
+  1回のレッスンで、今のスイングの「どこから直すべきか」を整理します。<br><br>
+  感覚ではなく、設計として。<br>
+  次のラウンドで再現できる状態にして終わります。
+</p>
+```
+
+  </div>
+
 </div>
 
 <!-- CTA -->
 
 <div class="cta-section">
   <div class="cta-inner reveal">
-    <span class="cta-eyebrow">NOTE</span>
-    <h2 class="cta-title">続きを読む</h2>
+    <span class="cta-eyebrow">RESERVE</span>
+    <h2 class="cta-title">体験レッスンを予約する</h2>
     <p class="cta-body">
-      なぜ順番が崩れるのか。<br>
-      どうすれば再現できるのか。<br>
-      感覚ではなく、設計として解説しています。
+      完全予約制。<br>
+      東京都渋谷区　90分　¥15,000<br><br>
+      まずはnoteで設計の考え方を読んでから、<br>
+      レッスンにお越しください。
     </p>
-    <a href="https://note.com/golfelia_" class="cta-btn">NOTE で読む</a>
-    <span class="cta-note">スマートフォンで3分</span>
+    <a href="https://note.com/golfelia_" class="cta-btn" style="display:block;margin-bottom:16px;">NOTE で読む</a>
+    <a href="mailto:golfelia44@gmail.com" class="cta-btn" style="display:block;margin-bottom:20px;">レッスンを予約する</a>
+    <span class="cta-note">golfelia44@gmail.com</span>
   </div>
 </div>
 
