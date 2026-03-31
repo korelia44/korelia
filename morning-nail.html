@@ -10,20 +10,29 @@
 <link rel="canonical" href="https://irogokoro.com/">
 
 <style>
+
 /* =========================
-   BASE
+   外枠（高級感の核）
 ========================= */
 body{
 font-family: 'Noto Serif JP', serif;
 margin:0;
 color:#2f2722;
 line-height:2;
-
-/* 大理石（うっすら見せる） */
 background-image: url('marble.jpg');
 background-size: cover;
 background-position: center;
 background-attachment: fixed;
+
+/* 外枠 */
+padding:20px;
+}
+
+/* フレーム */
+.frame{
+border:1px solid rgba(0,0,0,0.15);
+background: rgba(255,255,255,0.35);
+backdrop-filter: blur(8px);
 }
 
 /* =========================
@@ -31,14 +40,7 @@ background-attachment: fixed;
 ========================= */
 section{
 padding:100px 24px;
-
-/* ガラス感（高級） */
-background: rgba(255,255,255,0.45);
-backdrop-filter: blur(6px);
-
-/* 微妙な境界で“紙”感を出す */
-border-top: 1px solid rgba(255,255,255,0.3);
-border-bottom: 1px solid rgba(0,0,0,0.04);
+border-bottom:1px solid rgba(0,0,0,0.05);
 }
 
 .wrap{
@@ -59,8 +61,8 @@ margin-bottom:20px;
 
 h2{
 text-align:center;
-font-size:18px;
-letter-spacing:2px;
+font-size:16px;
+letter-spacing:3px;
 font-weight:400;
 margin-bottom:40px;
 color:#6b5a50;
@@ -73,7 +75,7 @@ font-size:15px;
 }
 
 /* =========================
-   BUTTON（高級寄り）
+   BUTTON（洗練）
 ========================= */
 .btn{
 display:inline-block;
@@ -102,7 +104,7 @@ margin-top:14px;
 }
 
 /* =========================
-   HERO 特別余白
+   HERO
 ========================= */
 .hero{
 padding:140px 24px 120px;
@@ -113,6 +115,8 @@ padding:140px 24px 120px;
 </head>
 
 <body>
+
+<div class="frame">
 
 <!-- HERO -->
 <section class="hero">
@@ -141,6 +145,20 @@ padding:140px 24px 120px;
 <p><strong>シンプルジェル（ワンカラー）</strong></p>
 <p>¥9,800（オフ込み）</p>
 <p>自爪を整えるネイル</p>
+
+<br><br>
+
+<p><strong>ネイルケア</strong></p>
+<p>¥6,500</p>
+<p>自爪を整えるケアメニュー</p>
+
+<br><br>
+
+<p><strong>長さ出し（1本）</strong></p>
+<p>¥880</p>
+
+<p><strong>亀裂補強（1本）</strong></p>
+<p>¥550</p>
 
 <p class="note">
 ※ソフトジェルオフ込み<br>
@@ -221,6 +239,8 @@ padding:140px 24px 120px;
 
 </div>
 </section>
+
+</div>
 
 </body>
 </html>
